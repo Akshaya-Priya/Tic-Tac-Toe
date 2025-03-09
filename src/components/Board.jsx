@@ -1,12 +1,13 @@
 function Square(){
     return(
         <>
-        <button className="square">X</button>
+            <button className="square">X</button>
         </>
     );
 }
 
-function Board({xplay}){
+function Board({xplay},{setXplay}){
+    let [matrix,setMatrix]=useState(null);
     return (
         <div className='board'>
             <div className="row1">

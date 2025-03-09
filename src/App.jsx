@@ -5,7 +5,7 @@ import './App.css'
 import Board from './components/Board'
 
 function App() {
-  const [xplay,setXplay] = useState(1);
+  let [xplay,setXplay] = useState(1);
 
   return (
     <>
@@ -13,7 +13,7 @@ function App() {
     <p>Current Player :{
       xplay?'X':'O'
     }</p>
-    <Board turn={xplay}/>
+    <Board turn={xplay} change={setXplay}/>
     </>
   )
 }
