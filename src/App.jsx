@@ -10,10 +10,8 @@ function App() {
   return (
     <>
     <h1>Tic Tak Toe</h1>
-    <p>Current Player :{
-      xplay?'X':'O'
-    }</p>
-    <Board turn={xplay} change={setXplay}/>
+    <p>Current Player :{ xplay?'X':'O' }</p>
+    <Board turn={xplay} setTurn={setXplay}/>
     </>
   )
 }
