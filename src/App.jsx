@@ -20,6 +20,12 @@ function Board(){
       return null;
     }
 
+    function refresh(){
+      setSymbol(Array(9).fill(null));
+      setTurn(1);
+      setWin(null);
+    }
+    
     function handleClick(i){
         if(symbol[i] || win){
           alert("The Square is already filled");
@@ -37,7 +43,7 @@ function Board(){
     
     return (
         <>
-        <p>{win ? `Winner is ${win}` :`Current Player : ${ turn?'X':'O' }`}</p>
+        <p>Current Player is {turn?'X':'O'}</p>
         <div className='board'>
             <div className="row1">
               <button className="square" onClick={()=>handleClick(0)}>{symbol[0]}</button>
@@ -54,6 +60,10 @@ function Board(){
               <button className="square" onClick={()=>handleClick(7)}>{symbol[7]}</button>
               <button className="square" onClick={()=>handleClick(8)}>{symbol[8]}</button>
             </div>
+        </div>
+        <div className="results">
+          <p>{win ? `The Winner is ${win}` :``}</p>
+          <p>{win ? <button className="NewGame" onClick={()=>refresh()}>New Game</button> : `` }</p>
         </div>
         </>
     );
