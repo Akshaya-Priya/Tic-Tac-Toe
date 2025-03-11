@@ -1,7 +1,6 @@
 .board{
   height:300px;
-  width:300px;
-  display:flex;
+  display:grid;
 }
 .square{
   height: 100px;
