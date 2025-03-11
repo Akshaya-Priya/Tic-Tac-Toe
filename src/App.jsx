@@ -4,7 +4,8 @@ import './App.css'
 function Board(){
     const [symbol,setSymbol]=useState(Array(9).fill(null));
     const [win,setWin]=useState(null);
-    let [turn,setTurn] = useState(1);
+    const [draw,setDraw]=useState(null);
+    const [turn,setTurn] = useState(1);
 
     function winner(board){
       const winning_combinations=[
@@ -17,18 +18,21 @@ function Board(){
           return board[a];
         }
       }
-      return null;
+      for(let i=0;i<9;i++){
+        if(!board[i]) return null;
+      }
+      return -1;
     }
 
     function refresh(){
       setSymbol(Array(9).fill(null));
       setTurn(1);
       setWin(null);
+      setDraw(null);
     }
-    
+
     function handleClick(i){
         if(symbol[i] || win){
-          alert("The Square is already filled");
           return;
         }
         let next=symbol.slice();
@@ -37,7 +41,8 @@ function Board(){
         setTurn((turn+1)%2);
         
         const x=winner(next);
-        if(x) setWin(x);
+        if(x===-1) setDraw(1);
+        else if(x) setWin(x);
     }
 
     
@@ -62,8 +67,8 @@ function Board(){
             </div>
         </div>
         <div className="results">
-          <p>{win ? `The Winner is ${win}` :``}</p>
-          <p>{win ? <button className="NewGame" onClick={()=>refresh()}>New Game</button> : `` }</p>
+          <p>{win ? `Winner is ${win}` : draw? `It is a Draw`:``}</p>
+          <p>{win || draw? <button className="NewGame" onClick={()=>refresh()}>New Game</button> : `` }</p>
         </div>
         </>
     );
