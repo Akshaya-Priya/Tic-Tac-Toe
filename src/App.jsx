@@ -50,21 +50,15 @@ function Board(){
         <>
         <p>Current Player is {turn?'X':'O'}</p>
         <div className='board'>
-            <div className="row1">
               <button className="square" onClick={()=>handleClick(0)}>{symbol[0]}</button>
               <button className="square" onClick={()=>handleClick(1)}>{symbol[1]}</button>
               <button className="square" onClick={()=>handleClick(2)}>{symbol[2]}</button>
-            </div>
-            <div className="row2">
               <button className="square" onClick={()=>handleClick(3)}>{symbol[3]}</button>
               <button className="square" onClick={()=>handleClick(4)}>{symbol[4]}</button>
               <button className="square" onClick={()=>handleClick(5)}>{symbol[5]}</button>
-            </div>
-            <div className="row3">
               <button className="square" onClick={()=>handleClick(6)}>{symbol[6]}</button>
               <button className="square" onClick={()=>handleClick(7)}>{symbol[7]}</button>
               <button className="square" onClick={()=>handleClick(8)}>{symbol[8]}</button>
-            </div>
         </div>
         <div className="results">
           <p>{win ? `Winner is ${win}` : draw? `It is a Draw`:``}</p>
@@ -77,7 +71,11 @@ function Board(){
 function App() {
   return (
     <>
-    <h1>Tic Tak Toe</h1>
+    <h1>
+      <span class="tic">Tic</span> 
+      <span class="tic">Tak</span> 
+      <span class="tic">Tic</span>
+    </h1>
     <Board />
     </>
   )
